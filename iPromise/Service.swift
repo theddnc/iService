@@ -271,7 +271,15 @@ public class Service {
     returned by ```NSURLSession```.
     */
     public func retrieve(filter: [String: String]) -> Promise {
-        return Promise.fulfill(NSHTTPURLResponse())
+        var queryString = ""
+        for (key, value) in filter {
+            if let encodedKey = key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()),
+                encodedValue = value.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+                queryString = "\(queryString)\(encodedKey)=\(encodedValue)&"
+            }
+        }
+        
+        return self.requestWithMethod(.RETRIEVE, path: "", queryString: queryString)
     }
     
     /**
@@ -322,9 +330,9 @@ public class Service {
     
     - returns: A ```Promise``` of the result.
     */
-    private func requestWithMethod(method: CRUDMethod, path: String = "", andData data: NSData? = nil) -> Promise {
+    private func requestWithMethod(method: CRUDMethod, path: String = "", queryString: String = "", andData data: NSData? = nil) -> Promise {
         do {
-            let request = try self.getReuqestForMethod(method, andPath: path)
+            let request = try self.getReuqestForMethod(method, path: path, andQueryString: queryString)
             request.HTTPBody = data
             
             return Promise {
@@ -361,9 +369,20 @@ public class Service {
     
     - returns: A NSMutableURLRequest with proper configuration.
     */
-    private func getReuqestForMethod(method: CRUDMethod, andPath path: String = "") throws -> NSMutableURLRequest {
+    private func getReuqestForMethod(method: CRUDMethod, path: String = "", andQueryString queryString: String="") throws -> NSMutableURLRequest {
         let cleanPath = try Service.cleanURIPath(path)
-        let url = self._url.URLByAppendingPathComponent(cleanPath)
+        
+        guard let urlComponents = NSURLComponents(URL: self._url, resolvingAgainstBaseURL: false) else {
+            throw ServiceError.BaseUrlDirty(self._url.absoluteString)
+        }
+        
+        let path = urlComponents.path ?? ""
+        urlComponents.path = "\(path)/\(cleanPath)"
+        urlComponents.percentEncodedQuery = queryString
+        
+        guard let url = urlComponents.URL else {
+            throw ServiceError.BaseUrlDirty(urlComponents.string ?? "")
+        }
         
         if self._overridingRealm != nil {
             let request = self._overridingRealm!.configuredRequestForMethod(method, andURL: url)

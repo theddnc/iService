@@ -10,7 +10,6 @@ import Foundation
 
 /**
 **TODO:** add possibility to list all services in this realm - for debugging (?)
-**TODO:** split this file into extensions for readability
 
 A ServiceRealm is an entry point for shared configuration of Services.
 
