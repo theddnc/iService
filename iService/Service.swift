@@ -1,13 +1,13 @@
 //
 //  Service.swift
-//  iPromise
+//  iService
 //
 //  Created by jzaczek on 27.10.2015.
 //  Copyright © 2015 jzaczek. All rights reserved.
 //
 
 import Foundation
-
+import iPromise
 
 /**
 **TODO**: add a handle to provide a class for response objects or a handle to 
@@ -35,6 +35,12 @@ See:
 - [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
 */
 public class Service {
+    
+    /**
+    An alias for ```Promise<ResponseBundle>``` to shorten and simplify it a bit
+    */
+    public typealias ResponsePromise = Promise<ResponseBundle>
+    
     /**
     Simple enum for HTTP methods
     */
@@ -102,6 +108,10 @@ public class Service {
         /// Thrown when unable to parse the given URI path. 
         /// String tuple contains the provided URI path.
         case UriPathDirty(String)
+        
+        /// Thrown when data task fails with NSError
+        /// Contains the NSError
+        case DataTaskFailed(NSError?)
     }
     
     /// ```NSURLSession``` for this service.
@@ -232,7 +242,7 @@ public class Service {
         containing data and response from the API. Otherwise it will contain the error
         returned by ```NSURLSession```.
     */
-    public func create(data: NSData) -> Promise {
+    public func create(data: NSData) -> Promise<ResponseBundle> {
         return self.requestWithMethod(.CREATE, path: "", andData: data)
     }
     
@@ -245,7 +255,7 @@ public class Service {
     containing data and response from the API. Otherwise it will contain the error
     returned by ```NSURLSession```.
     */
-    public func retrieve(path: String) -> Promise {
+    public func retrieve(path: String) -> Promise<ResponseBundle> {
         return self.requestWithMethod(.RETRIEVE, path: path)
     }
     
@@ -257,7 +267,7 @@ public class Service {
     containing data and response from the API. Otherwise it will contain the error
     returned by ```NSURLSession```.
     */
-    public func retrieve() -> Promise {
+    public func retrieve() -> Promise<ResponseBundle> {
         return self.requestWithMethod(.RETRIEVE)
     }
     
@@ -270,7 +280,7 @@ public class Service {
     containing data and response from the API. Otherwise it will contain the error
     returned by ```NSURLSession```.
     */
-    public func retrieve(filter: [String: String]) -> Promise {
+    public func retrieve(filter: [String: String]) -> ResponsePromise {
         var queryString = ""
         for (key, value) in filter {
             if let encodedKey = key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()),
@@ -292,7 +302,7 @@ public class Service {
     containing data and response from the API. Otherwise it will contain the error
     returned by ```NSURLSession```.
     */
-    public func update(path: String, data: NSData) -> Promise {
+    public func update(path: String, data: NSData) -> ResponsePromise {
         return self.requestWithMethod(.UPDATE, path: path, andData: data)
     }
     
@@ -305,7 +315,7 @@ public class Service {
     containing data and response from the API. Otherwise it will contain the error
     returned by ```NSURLSession```.
     */
-    public func destroy(path: String) -> Promise {
+    public func destroy(path: String) -> ResponsePromise {
         return self.requestWithMethod(.DESTROY, path: path)
     }
     
@@ -330,22 +340,28 @@ public class Service {
     
     - returns: A ```Promise``` of the result.
     */
-    private func requestWithMethod(method: CRUDMethod, path: String = "", queryString: String = "", andData data: NSData? = nil) -> Promise {
+    private func requestWithMethod(method: CRUDMethod, path: String = "", queryString: String = "", andData data: NSData? = nil) -> ResponsePromise {
         do {
             let request = try self.getReuqestForMethod(method, path: path, andQueryString: queryString)
             request.HTTPBody = data
-            
+        
             return Promise {
                 (fulfill, reject) in
                 let dataTask = self._session.dataTaskWithRequest(request, completionHandler: {
                     (data, response, error) in
                     
                     guard error == nil && data != nil else {
-                        reject(error)
+                        reject(ServiceError.DataTaskFailed(error))
                         return
                     }
                     
-                    fulfill((data: data!, response: response!))
+                    guard let response = response as? NSHTTPURLResponse else {
+                        reject(ServiceError.DataTaskFailed(nil))
+                        return
+                    }
+                    
+                    let bundle = ResponseBundle(request: request, response: response, data: data, error: error)
+                    fulfill(bundle)
                     return
                     
                 })
@@ -413,7 +429,7 @@ public class Service {
             dirtyUrl = dirtyUrl.substringToIndex(dirtyUrl.endIndex.predecessor())
         }
         
-        if !dirtyUrl.hasPrefix("http://") || !dirtyUrl.hasPrefix("https://") {
+        if !(dirtyUrl.hasPrefix("http://") || dirtyUrl.hasPrefix("https://")) {
             dirtyUrl = "https://" + dirtyUrl
         }
         

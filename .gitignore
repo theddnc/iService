@@ -16,12 +16,15 @@ DerivedData
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
+*.xcworkspace
 
 ## Other
 *.xccheckout
 *.moved-aside
 *.xcuserstate
 *.xcscmblueprint
+Podfile.lock
+Pods/
 
 ## Obj-C/Swift specific
 *.hmap

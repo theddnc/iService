@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import iPromise
 
 /**
 **TODO:** add possibility to list all services in this realm - for debugging (?)
