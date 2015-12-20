@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		302A82A21C25FB9000304CF7 /* iService.h in Headers */ = {isa = PBXBuildFile; fileRef = 302A82A11C25FB9000304CF7 /* iService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		302A82A91C25FB9000304CF7 /* iService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A829E1C25FB9000304CF7 /* iService.framework */; };
-		302A82AE1C25FB9000304CF7 /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82AD1C25FB9000304CF7 /* ServiceTests.swift */; };
 		302A82BA1C25FC1800304CF7 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82B81C25FC1800304CF7 /* Service.swift */; };
 		302A82BB1C25FC1800304CF7 /* ServiceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82B91C25FC1800304CF7 /* ServiceRealm.swift */; };
 		302A82BD1C25FE2600304CF7 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82BC1C25FE2600304CF7 /* Response.swift */; };
@@ -34,7 +33,6 @@
 		302A82A11C25FB9000304CF7 /* iService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iService.h; sourceTree = "<group>"; };
 		302A82A31C25FB9000304CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		302A82A81C25FB9000304CF7 /* iServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		302A82AD1C25FB9000304CF7 /* ServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTests.swift; sourceTree = "<group>"; };
 		302A82AF1C25FB9000304CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		302A82B81C25FC1800304CF7 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		302A82B91C25FC1800304CF7 /* ServiceRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRealm.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 		302A82AC1C25FB9000304CF7 /* iServiceTests */ = {
 			isa = PBXGroup;
 			children = (
-				302A82AD1C25FB9000304CF7 /* ServiceTests.swift */,
 				302A82AF1C25FB9000304CF7 /* Info.plist */,
 			);
 			path = iServiceTests;
@@ -328,7 +325,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				302A82AE1C25FB9000304CF7 /* ServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,9 +14,51 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E3507DF5E85C868D02944D37993E9166"
+               BuildableName = "iPromise.framework"
+               BlueprintName = "iPromise"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "393E0E1A41299C44C63DBB766A243010"
+               BuildableName = "Nocilla.framework"
+               BlueprintName = "Nocilla"
+               ReferencedContainer = "container:Pods/Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "302A829D1C25FB9000304CF7"
                BuildableName = "iService.framework"
                BlueprintName = "iService"
+               ReferencedContainer = "container:iService.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "302A82A71C25FB9000304CF7"
+               BuildableName = "iServiceTests.xctest"
+               BlueprintName = "iServiceTests"
                ReferencedContainer = "container:iService.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
