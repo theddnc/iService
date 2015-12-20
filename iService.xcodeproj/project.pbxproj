@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		302A82A21C25FB9000304CF7 /* iService.h in Headers */ = {isa = PBXBuildFile; fileRef = 302A82A11C25FB9000304CF7 /* iService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		302A82A91C25FB9000304CF7 /* iService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302A829E1C25FB9000304CF7 /* iService.framework */; };
+		302A82AE1C25FB9000304CF7 /* CrudTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82AD1C25FB9000304CF7 /* CrudTests.swift */; };
 		302A82BA1C25FC1800304CF7 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82B81C25FC1800304CF7 /* Service.swift */; };
 		302A82BB1C25FC1800304CF7 /* ServiceRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82B91C25FC1800304CF7 /* ServiceRealm.swift */; };
 		302A82BD1C25FE2600304CF7 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82BC1C25FE2600304CF7 /* Response.swift */; };
+		302A82BF1C26BA4400304CF7 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82BE1C26BA4400304CF7 /* ConfigurationTests.swift */; };
+		302A82C11C26BA9B00304CF7 /* JZTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302A82C01C26BA9B00304CF7 /* JZTestCase.swift */; };
 		5F0D4C4A335082CB1E70AA4E /* Pods_iService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48631EDA972DE2199A59E1ED /* Pods_iService.framework */; };
 		AD395256DB125D64ED1644F8 /* Pods_iServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B5A55F0701C0D960454FB5 /* Pods_iServiceTests.framework */; };
 /* End PBXBuildFile section */
@@ -33,10 +36,13 @@
 		302A82A11C25FB9000304CF7 /* iService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iService.h; sourceTree = "<group>"; };
 		302A82A31C25FB9000304CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		302A82A81C25FB9000304CF7 /* iServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		302A82AD1C25FB9000304CF7 /* CrudTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrudTests.swift; sourceTree = "<group>"; };
 		302A82AF1C25FB9000304CF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		302A82B81C25FC1800304CF7 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		302A82B91C25FC1800304CF7 /* ServiceRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRealm.swift; sourceTree = "<group>"; };
 		302A82BC1C25FE2600304CF7 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		302A82BE1C26BA4400304CF7 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		302A82C01C26BA9B00304CF7 /* JZTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JZTestCase.swift; sourceTree = "<group>"; };
 		3D1FE02800DFEA95605CF12C /* Pods-iService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iService.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iService/Pods-iService.debug.xcconfig"; sourceTree = "<group>"; };
 		48631EDA972DE2199A59E1ED /* Pods_iService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B5A55F0701C0D960454FB5 /* Pods_iServiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iServiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +105,10 @@
 		302A82AC1C25FB9000304CF7 /* iServiceTests */ = {
 			isa = PBXGroup;
 			children = (
+				302A82AD1C25FB9000304CF7 /* CrudTests.swift */,
 				302A82AF1C25FB9000304CF7 /* Info.plist */,
+				302A82BE1C26BA4400304CF7 /* ConfigurationTests.swift */,
+				302A82C01C26BA9B00304CF7 /* JZTestCase.swift */,
 			);
 			path = iServiceTests;
 			sourceTree = "<group>";
@@ -325,6 +334,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302A82BF1C26BA4400304CF7 /* ConfigurationTests.swift in Sources */,
+				302A82AE1C25FB9000304CF7 /* CrudTests.swift in Sources */,
+				302A82C11C26BA9B00304CF7 /* JZTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

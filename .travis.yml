@@ -7,4 +7,3 @@ xcode_sdk: iphonesimulator8.3
 
 script:
 - xcodebuild clean build test -workspace iService.xcworkspace -scheme iService -destination 'name=iPhone 6'
-

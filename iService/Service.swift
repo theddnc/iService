@@ -10,8 +10,11 @@ import Foundation
 import iPromise
 
 /**
-**TODO**: add a handle to provide a class for response objects or a handle to 
-provide parsing logic
+**TODO**: 
+ - add a handle to provide a class for response objects or a handle to
+   provide parsing logic
+ - add a ```request``` method to fire a simple http request
+ 
 
 Represents a REST service. Allows for CRUD operations:
 
@@ -137,7 +140,7 @@ public class Service {
     ///
     /// If the realm behind this reference is modified, these changes will also
     /// influence other services of this Realm.
-    public var Realm: ServiceRealm {
+    public var realm: ServiceRealm {
         get {
             return _realm
         }

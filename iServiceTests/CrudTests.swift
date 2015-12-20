@@ -11,21 +11,10 @@ import Nocilla
 import iPromise
 @testable import iService
 
-class ServiceTests: XCTestCase {
+class CrudTests: JZTestCase {
     
     let baseUrl = "https://mock.com"
     let resource = "resource"
-    
-    override func setUp() {
-        super.setUp()
-        LSNocilla.sharedInstance().start()
-    }
-    
-    override func tearDown() {
-        LSNocilla.sharedInstance().clearStubs()
-        LSNocilla.sharedInstance().stop()
-        super.tearDown()
-    }
     
     func testRetrieveSingleItem() {
         expect { testExpectation in
@@ -75,6 +64,33 @@ class ServiceTests: XCTestCase {
                     XCTAssertEqual(result.error, nil, "Error is not nil")
                     testExpectation.fulfill()
             }
+        }
+    }
+    
+    func testRetrieveParseError() {
+        expect { testExpectation in
+            stubRequest("GET", "\(self.baseUrl)/\(self.resource)/1?")
+                .andReturn(200)
+                .withBody("{\"key\":\"value\"}")
+            
+            try! Service(baseUrl: self.baseUrl, resourceUri: self.resource)
+                .retrieve("ąćęłńóśżź")
+                .then({ result in
+                    XCTFail("Expected success handler not to be called")
+                    testExpectation.fulfill()
+                }, onFailure:{ err in
+                    guard let error = err as? Service.ServiceError else {
+                        throw err
+                    }
+                    
+                    switch error {
+                    case .UriPathDirty(let path):
+                        XCTAssertEqual(path, "ąćęłńóśżź", "Different paths")
+                        testExpectation.fulfill()
+                    default:
+                        break
+                    }
+                })
         }
     }
     
@@ -146,27 +162,5 @@ class ServiceTests: XCTestCase {
                     testExpectation.fulfill()
             }
         }
-    }
-    
-    private func str(data: NSData?) -> String? {
-        guard let data = data else {
-            return nil
-        }
-        return NSString(data: data, encoding: NSUTF8StringEncoding) as? String
-    }
-    
-    private func data(str: String) -> NSData {
-        return str.dataUsingEncoding(NSUTF8StringEncoding)!
-    }
-    
-    private func expect(testClosure: (XCTestExpectation) -> Void) -> Void {
-        let testExpectation = expectationWithDescription("Test expectation")
-        
-        testClosure(testExpectation)
-        
-        waitForExpectationsWithTimeout(5, handler: {
-            error in
-            XCTAssertNil(error, "Error")
-        })
     }
 }
