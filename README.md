@@ -4,15 +4,15 @@
 [![CocoaPods](https://img.shields.io/cocoapods/v/iService.svg)](https://cocoapods.org/pods/iService)
 [![CocoaPods](https://img.shields.io/cocoapods/l/iService.svg)](https://cocoapods.org/pods/iService)
 [![CocoaPods](https://img.shields.io/cocoapods/p/iService.svg)](https://cocoapods.org/pods/iService)
-[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/iService.svg)](http://cocoadocs.org/docsets/iPromise/0.0.1/)
+[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/iService.svg)](http://cocoadocs.org/docsets/iService/0.0.2/)
 
-RESTful interfaces made simple. 
+Communication with RESTful interfaces made simple. 
 
 ## Installation
 
 Copy this line into your podfile:
 
-```pod 'iPromise', '~> 1.1'```
+```pod 'iService', '~> 0.0'```
 
 Make sure to also add ```!use_frameworks```
 
@@ -137,7 +137,7 @@ userService.retrieve("1").then({ result in
 
 ## Documentation
 
-Documentation is available [here](http://cocoadocs.org/docsets/iService/0.0.1/)
+Documentation is available [here](http://cocoadocs.org/docsets/iService/0.0.2/)
 
 ## Licence
 

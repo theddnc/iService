@@ -170,7 +170,7 @@ public class Service {
     
     - throws: ```Service.ServiceError``` when unable to parse provided args to a ```NSURL```
     */
-    init(baseUrl: String, resourceUri: String) throws {
+    public init(baseUrl: String, resourceUri: String) throws {
         _session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         
         let baseUrl = try Service.cleanBaseUrl(baseUrl)
@@ -193,7 +193,7 @@ public class Service {
         commentService.retrieve("34")   //.then(...)
         ```
     */
-    init(serviceUrl: NSURL) {
+    public init(serviceUrl: NSURL) {
         _session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
         _url = serviceUrl
         _realm = ServiceRealm.getDefault()
