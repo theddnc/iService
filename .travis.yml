@@ -1,6 +1,6 @@
 language: objective-c
 
-xcode_project: iService.xcodeproj
+xcode_workspace: iService.xcworkspace
 xcode_scheme: iService
 osx_image: xcode7.1
 xcode_sdk: iphonesimulator8.3
