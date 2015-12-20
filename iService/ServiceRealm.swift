@@ -111,7 +111,7 @@ public class ServiceRealm {
     
     /// Contains unique id for this realm, read only
     /// **TODO:** is this necessary?
-    public var Identifier: String {
+    public var id: String {
         get {
             return "KEY: \(_key), ID: \(_id)\n"
         }
@@ -417,6 +417,12 @@ public class ServiceRealm {
             realms[key] = realm
         }
         return realms[key]!
+    }
+    
+    public class func destroy(key: String) -> Void {
+        if realms.keys.contains(key) {
+            realms.removeValueForKey(key)
+        }
     }
     
     /**
