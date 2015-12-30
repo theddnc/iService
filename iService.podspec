@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "iService"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Communication with RESTful interfaces made easy"
 
 s.description  = <<-DESC
@@ -17,7 +17,7 @@ s.description  = <<-DESC
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "https://github.com/theddnc/iService.git", :tag => "0.0.2"}
+  s.source       = { :git => "https://github.com/theddnc/iService.git", :tag => "0.0.3"}
 
   s.source_files  = "iService/*"
 

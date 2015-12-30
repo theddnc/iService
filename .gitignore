@@ -29,3 +29,6 @@ Pods/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+
+## Docs
+docs/

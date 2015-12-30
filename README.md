@@ -4,7 +4,7 @@
 [![CocoaPods](https://img.shields.io/cocoapods/v/iService.svg)](https://cocoapods.org/pods/iService)
 [![CocoaPods](https://img.shields.io/cocoapods/l/iService.svg)](https://cocoapods.org/pods/iService)
 [![CocoaPods](https://img.shields.io/cocoapods/p/iService.svg)](https://cocoapods.org/pods/iService)
-[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/iService.svg)](http://cocoadocs.org/docsets/iService/0.0.2/)
+[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/iService.svg)](http://cocoadocs.org/docsets/iService/0.0.3/)
 
 Communication with RESTful interfaces made simple. 
 
@@ -137,7 +137,7 @@ userService.retrieve("1").then({ result in
 
 ## Documentation
 
-Documentation is available [here](http://cocoadocs.org/docsets/iService/0.0.2/)
+Documentation is available [here](http://cocoadocs.org/docsets/iService/0.0.3/)
 
 ## Licence
 

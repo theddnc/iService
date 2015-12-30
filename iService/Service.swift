@@ -283,7 +283,7 @@ public class Service {
     containing data and response from the API. Otherwise it will contain the error
     returned by ```NSURLSession```.
     */
-    public func retrieve(filter: [String: String]) -> ResponsePromise {
+    public func retrieve(filter: [String: String]) -> Promise<ResponseBundle> {
         var queryString = ""
         for (key, value) in filter {
             if let encodedKey = key.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()),
